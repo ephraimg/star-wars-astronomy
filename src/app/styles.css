@@ -1,0 +1,109 @@
+
+/* 
+
+    Clear the default styles using Meyer's reset
+
+    http://meyerweb.com/eric/tools/css/reset/ 
+    v2.0 | 20110126
+    License: none (public domain)
+
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* start custom styles */
+
+.banner {
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 25px 10px;
+}
+
+.search {
+    width: 100%;
+    background-color: LightGray;
+    color: black;
+    padding: 10px 10px;    
+}
+
+#search {
+    width: 150px;
+    border: none;
+    border-radius: 5px;
+    padding: 3px 5px;
+}
+
+.main {
+    padding: 5px;
+}
+
+table {
+    width: 100%;
+    border-bottom: 10px solid LightGray;
+    border-radius: 5px;  
+    overflow: hidden;  
+    border-collapse: separate;
+    margin: 5px;
+}
+
+th {
+    background-color: LightBlue;  
+    color: white;  
+}
+
+tr {
+    height: 25px;
+}
+
+th, td {
+    padding: 3px;
+    text-align: center;
+}
+
+.nav {
+    text-align: right;
+}
