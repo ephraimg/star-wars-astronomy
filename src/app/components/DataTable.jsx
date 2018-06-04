@@ -1,18 +1,19 @@
 
 import React from 'react';
 
-export const DataTable = ({ data = { results: [] } }) =>
+export const DataTable = ({ data, sort }) =>
     <table>
     <tbody> 
       <tr>
-        <th>NAME</th>
-        <th>POPULATION</th>
-        <th>DIAMETER</th>
-        <th>ROTATION PERIOD</th>
-        <th>ORBITAL PERIOD</th>
-        <th>TERRAIN</th>
-        <th>FILMS</th>
+        <th onClick={() => sort('name')}>NAME</th>
+        <th onClick={() => sort('population')}>POPULATION</th>
+        <th onClick={() => sort('diameter')}>DIAMETER</th>
+        <th onClick={() => sort('rotation_period')}>ROTATION PERIOD</th>
+        <th onClick={() => sort('orbital_period')}>ORBITAL PERIOD</th>
+        <th className="no-sort">TERRAIN</th>
+        <th className="no-sort">FILMS</th>
       </tr>
+{ /* sample data for testing
       <tr>
         <td>Corellia</td>
         <td>3000000000</td>
@@ -26,6 +27,7 @@ export const DataTable = ({ data = { results: [] } }) =>
         </td>
         <td>none</td>
       </tr>
+*/ }
       { data.results.map(row => 
           <tr key={row.name}>
             <td>{row.name}</td>
@@ -38,7 +40,11 @@ export const DataTable = ({ data = { results: [] } }) =>
                     <div key={terr}>{terr}</div>
                 )}
             </td>
-            <td>{row.films}</td>
+            <td>
+                { row.films.map(film =>
+                    <div key={film}>{film}</div>
+                )}
+            </td>
           </tr>
         )}
     </tbody>

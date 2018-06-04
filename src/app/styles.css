@@ -70,8 +70,8 @@ h1 {
 }
 
 h3 {
-    font-size: 1.5rem;
-    color: gray;
+    font-size: 1.25rem;
+    color: DarkGray;
 }
 
 .banner {
@@ -89,20 +89,23 @@ h3 {
     padding: 1rem 1%;    
 }
 
-.search-input {
-    width: 15rem;
-    border-top-right-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
-}
-
 .search-button {
-    float: left;
+    display: inline-block;   
+    vertical-align: top; 
     width: 2rem;
     border-top-left-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;    
     background-image: url("/src/app/images/search-icon.png");
     background-size: contain;
     cursor: pointer;
+}
+
+.search-input {
+    display: inline-block;   
+    vertical-align: top;  
+    width: 15rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
 }
 
 .search-input, .search-button {
@@ -112,9 +115,17 @@ h3 {
     padding: 0 1rem;
 }
 
+.spinner {
+    display: inline-block;
+    vertical-align: top; 
+    height: 2rem;
+    margin-left: 0.5rem;
+}
+
 .main {
     width: 100%;
     padding: 1%;
+    overflow-x: scroll;
 }
 
 table {
@@ -131,6 +142,11 @@ th {
     font-weight: 200;
     padding: 0.75rem;
     text-align: center;
+    cursor: pointer;
+}
+
+.no-sort {
+    cursor: default;
 }
 
 td {

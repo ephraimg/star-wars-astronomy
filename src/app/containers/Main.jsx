@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-
+import { getPage, sort } from '../actions';
 import { DataTable } from '../components/DataTable';
 import { Nav } from '../components/Nav';
 
@@ -12,10 +12,10 @@ let Main = class extends React.Component {
     }
 
     render() { 
-        const { search, results, page, getPage } = this.props;
+        const { search, planets, page, getPage, sort } = this.props;
         return (
             <div className="main">  
-                <DataTable data={results} />
+                <DataTable data={planets} sort={sort} />
                 <Nav page={page} getPage={page => getPage(search, page)} />
             </div> 
         );
@@ -26,14 +26,16 @@ let Main = class extends React.Component {
 const mapStateToProps = state => {
     return {
         search: state.search,
-        results: state.results,
+        planets: state.planets,
+        sorted: state.sorted,
         page: state.page
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        getPage: (search, page) => dispatch(getPage(search, page))
+        getPage: (search, page) => dispatch(getPage(search, page)),
+        sort: field => dispatch(sort(field))
     }
 };
 

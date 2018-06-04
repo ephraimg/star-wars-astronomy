@@ -34,19 +34,44 @@ export const search = (state, action) => {
         return action.search;
     }
 
+    if (action.type === 'FETCH') {
+        return '';
+    }
+
     return state;
 };
 
 import { sampleData2 } from './sampleData';
-const initialResultsState = sampleData2;
-export const results = (state, action) => {
+const initialPlanetsState = sampleData2;
+export const planets = (state, action) => {
 
     if (typeof state === 'undefined') {
-        return initialResultsState;
+        return initialPlanetsState;
     }
 
-    if (action.type === 'RESULTS_SET') {
-        return action.results;
+    if (action.type === 'PLANETS_SET') {
+        return action.planets;
+    }
+
+    if (action.type === 'PLANETS_SORT') {
+        const compareAlph = (a, b) => {
+            if (a[action.field] < b[action.field]) { return -1; }
+            if (a[action.field] > b[action.field]) { return 1; }
+            return 0;            
+        };
+        const compareNum = (a, b) => {
+            return (+a[action.field] || 0) - (+b[action.field] || 0);
+        }
+        let compare;
+        if (action.field === 'name') { 
+            compare = compareAlph; 
+        } else {
+            compare = compareNum;
+        }
+        const ordered = action.sorted.order === 'asc'
+            ? [...state.results].sort((a, b) => compare(a, b)) 
+            : [...state.results].sort((a, b) => compare(b, a));
+        return Object.assign({}, state, { results: ordered });
     }
 
     return state;
@@ -67,10 +92,32 @@ export const page = (state, action) => {
 };
 
 
+const initialSortedState = { field: null, order: 'desc' };
+export const sorted = (state, action) => {
+
+    if (typeof state === 'undefined') {
+        return initialSortedState;
+    }
+
+    if (action.type === 'SORTED_SET') {
+        const flip = { 'asc': 'desc', 'desc': 'asc' };
+        const newOrder = state.field === action.field 
+            ? flip[state.order] 
+            : state.order;
+        return {
+            field: action.field,
+            order: newOrder
+        };
+    }
+
+    return state;
+};
+
 export const reducer = combineReducers({
     fetching,
+    sorted,
     search,
-    results,
+    planets,
     page
 });
 
