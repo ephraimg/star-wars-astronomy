@@ -1,7 +1,7 @@
 
 /* 
 
-    Clear the default styles using Meyer's reset
+    Clear the default styles using Meyer reset
 
     http://meyerweb.com/eric/tools/css/reset/ 
     v2.0 | 20110126
@@ -55,6 +55,25 @@ table {
 
 /* start custom styles */
 
+html {
+    font-size: 14px;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    font-size: 1rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+    color: gray;
+}
+
 .banner {
     width: 100%;
     background-color: black;
@@ -67,41 +86,57 @@ table {
     width: 100%;
     background-color: LightGray;
     color: black;
-    padding: 10px 10px;    
+    padding: 1rem 1%;    
 }
 
-#search {
-    width: 150px;
+.search-input {
+    width: 15rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+
+.search-button {
+    float: left;
+    width: 2rem;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;    
+    background-image: url("/src/app/images/search-icon.png");
+    background-size: contain;
+    cursor: pointer;
+}
+
+.search-input, .search-button {
+    height: 2rem;
+    line-height: 2rem;
     border: none;
-    border-radius: 5px;
-    padding: 3px 5px;
+    padding: 0 1rem;
 }
 
 .main {
-    padding: 5px;
+    width: 100%;
+    padding: 1%;
 }
 
 table {
     width: 100%;
-    border-bottom: 10px solid LightGray;
+    border-bottom: 15px solid LightGray;
     border-radius: 5px;  
     overflow: hidden;  
     border-collapse: separate;
-    margin: 5px;
 }
 
 th {
-    background-color: LightBlue;  
+    background-color: #54c6e5;
     color: white;  
-}
-
-tr {
-    height: 25px;
-}
-
-th, td {
-    padding: 3px;
+    font-weight: 200;
+    padding: 0.75rem;
     text-align: center;
+}
+
+td {
+    padding: 0.5rem;
+    text-align: center;
+    border-bottom: 1px solid LightGray;
 }
 
 .nav {
