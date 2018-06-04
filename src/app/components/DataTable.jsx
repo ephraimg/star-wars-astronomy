@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-export const DataTable = ({ data = [] }) =>
+export const DataTable = ({ data = { results: [] } }) =>
     <table>
     <tbody> 
       <tr>
@@ -21,13 +21,13 @@ export const DataTable = ({ data = [] }) =>
         <td>329</td>
         <td>
             { 'plains, urban, hills'.split(', ').map(terr => 
-                <div>{terr}</div>
+                <div key={terr}>{terr}</div>
             )}
         </td>
         <td>none</td>
       </tr>
-      { data.map(row => 
-          <tr>
+      { data.results.map(row => 
+          <tr key={row.name}>
             <td>{row.name}</td>
             <td>{row.population}</td>
             <td>{row.diameter}</td>
@@ -35,7 +35,7 @@ export const DataTable = ({ data = [] }) =>
             <td>{row.orbital_period}</td>
             <td>
                 { row.terrain.split(', ').map(terr =>
-                    <div>{terr}</div>
+                    <div key={terr}>{terr}</div>
                 )}
             </td>
             <td>{row.films}</td>

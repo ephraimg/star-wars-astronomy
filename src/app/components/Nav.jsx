@@ -1,7 +1,18 @@
 
 import React from 'react';
 
-export const Nav = () =>
-    <div className="nav">  
-        <h1>Nav controls here</h1>
-    </div>;
+export class Nav extends React.Component {
+
+    constructor(props) {
+        super(props);
+    }
+
+    render() { 
+        const { page, getPage } = this.props;
+        return (
+            <div className="nav">  
+                <h1>Nav controls here. Current page: {page}</h1>
+            </div> 
+        );
+    }
+};
