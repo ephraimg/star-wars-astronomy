@@ -3,13 +3,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { Search as SearchComp } from '../components/Search';
-import { changeSearch, fetch } from '../actions';
+import { changeSearch, fetch, fetchFilms } from '../actions';
 
 let Search = class extends React.Component {
 
     constructor(props) {
         super(props);
         this.fetchCurrentSearch = this.fetchCurrentSearch.bind(this);
+    }
+    componentDidMount() {
+        this.props.fetchFilms();
     }
     fetchCurrentSearch() {
         this.props.fetch(this.props.search);
@@ -35,7 +38,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         changeSearch: e => dispatch(changeSearch(e.target.value)),
-        fetch: search => dispatch(fetch(search))
+        fetch: search => dispatch(fetch(search)),
+        fetchFilms: () => dispatch(fetchFilms())
     }
 };
 

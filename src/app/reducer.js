@@ -41,6 +41,21 @@ export const search = (state, action) => {
     return state;
 };
 
+
+const initialFilmsState = {};
+export const films = (state, action) => {
+
+    if (typeof state === 'undefined') {
+        return initialFilmsState;
+    }
+
+    if (action.type === 'FILMS_SET') {
+        return action.films;
+    }
+
+    return state;
+};
+
 import { sampleData2 } from './sampleData';
 const initialPlanetsState = sampleData2;
 export const planets = (state, action) => {
@@ -117,6 +132,7 @@ export const reducer = combineReducers({
     fetching,
     sorted,
     search,
+    films,
     planets,
     page
 });

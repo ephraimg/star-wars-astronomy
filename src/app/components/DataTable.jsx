@@ -37,12 +37,12 @@ export const DataTable = ({ data, sort }) =>
             <td>{row.orbital_period}</td>
             <td>
                 { row.terrain.split(', ').map(terr =>
-                    <div key={terr}>{terr}</div>
+                    <div key={terr}>{terr[0].toUpperCase() + terr.slice(1)}</div>
                 )}
             </td>
             <td>
                 { row.films.map(film =>
-                    <div key={film}>{film}</div>
+                    <div key={film}>"{film}"</div>
                 )}
             </td>
           </tr>
