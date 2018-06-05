@@ -23,11 +23,13 @@ export const fetching = (state, action) => {
     return state;
 };
 
-const initialSearchState = '';
-export const search = (state, action) => {
+
+
+const initialSearchTextState = '';
+export const searchText = (state, action) => {
 
     if (typeof state === 'undefined') {
-        return initialSearchState;
+        return initialSearchTextState;
     }
 
     if (action.type === 'SEARCH_CHANGE') {
@@ -40,6 +42,28 @@ export const search = (state, action) => {
 
     return state;
 };
+
+const initialPrevSearchState = '';
+export const prevSearch = (state, action) => {
+
+    if (typeof state === 'undefined') {
+        return initialPrevSearchState;
+    }
+
+    if (action.type === 'PREV_SEARCH_SET') {
+        return action.search;
+    }
+
+    return state;
+};
+
+
+
+
+
+
+
+
 
 
 const initialFilmsState = {};
@@ -76,20 +100,17 @@ export const planets = (state, action) => {
     }
 
     if (action.type === 'PLANETS_SORT') {
+        const field = action.sorted.field;
         const compareAlph = (a, b) => {
-            if (a[action.field] < b[action.field]) { return -1; }
-            if (a[action.field] > b[action.field]) { return 1; }
+            if (a[field] < b[field]) { return -1; }
+            if (a[field] > b[field]) { return 1; }
             return 0;            
         };
         const compareNum = (a, b) => {
-            return (+a[action.field] || 0) - (+b[action.field] || 0);
+            return (+a[field] || 0) - (+b[field] || 0);
         }
-        let compare;
-        if (action.field === 'name') { 
-            compare = compareAlph; 
-        } else {
-            compare = compareNum;
-        }
+        const compare = field === 'name'
+            ? compareAlph : compareNum;
         const ordered = action.sorted.order === 'asc'
             ? [...state.results].sort((a, b) => compare(a, b)) 
             : [...state.results].sort((a, b) => compare(b, a));
@@ -135,12 +156,17 @@ export const sorted = (state, action) => {
     return state;
 };
 
-export const reducer = combineReducers({
+export const search = combineReducers({
     fetching,
-    sorted,
-    search,
-    films,
-    planets,
+    searchText,
+    prevSearch,
     page
+});
+
+export const reducer = combineReducers({
+    search,
+    planets,
+    films,
+    sorted
 });
 

@@ -14,7 +14,7 @@ export const Search = props => (
         <input 
             className="search-input" 
             placeholder="Search" 
-            value={props.search}
+            value={props.searchText}
             onChange={props.changeSearch} 
             onKeyDown={props.handleKeyPress} >
         </input>

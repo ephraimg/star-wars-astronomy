@@ -13,16 +13,17 @@ let Main = class extends React.Component {
     }
     handleSort(field) {
         this.props.setSort(field);
-        this.props.sort(field);
+        this.props.sort();
     }
     render() { 
-        const { search, planets, page, fetch } = this.props;
+        const { prevSearch, planets, page, fetch } = this.props;
+        console.log('\n\n\nprevSearch:' + prevSearch + '\n\n\n');
         return (
             <div className="main">  
                 <div className="table-wrapper">
                     <DataTable data={planets} sort={this.handleSort} />
                 </div>
-                <Nav page={page} count={planets.count} fetchPage={page => fetch(search, page)} />
+                <Nav page={page} count={planets.count} fetchPage={page => fetch(prevSearch, page)} />
             </div> 
         );
     }
@@ -31,10 +32,10 @@ let Main = class extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        search: state.search,
+        prevSearch: state.search.prevSearch,
+        page: state.search.page,
         planets: state.planets,
-        sorted: state.sorted,
-        page: state.page
+        sorted: state.sorted
     }
 };
 

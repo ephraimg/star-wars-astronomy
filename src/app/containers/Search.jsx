@@ -15,11 +15,11 @@ let Search = class extends React.Component {
         this.props.fetchFilms();
     }
     fetchCurrentSearch() {
-        this.props.fetch(this.props.search);
+        this.props.fetch(this.props.searchText);
     }
     render() {  return (
         <SearchComp 
-            search={this.props.search}
+            searchText={this.props.searchText}
             fetching={this.props.fetching}
             changeSearch={this.props.changeSearch}
             handleClick={this.fetchCurrentSearch}
@@ -30,8 +30,8 @@ let Search = class extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        search: state.search,
-        fetching: state.fetching
+        searchText: state.search.searchText,
+        fetching: state.search.fetching
     }
 };
 

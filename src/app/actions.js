@@ -9,13 +9,12 @@ export function changeSearch(search) {
     };
 };
 
-export function sort(field = 'name') {
+export function sort() {
     return function(dispatch, getState) {
         const { sorted } = getState();
         dispatch({
             type: 'PLANETS_SORT',
-            sorted,
-            field
+            sorted
         });
     };
 };
@@ -52,6 +51,10 @@ const baseAPI = 'https://swapi.co/api/planets/';
 
 export function fetch(search, page = 1) {
     return function(dispatch, getState) {
+        dispatch({
+            type: 'PREV_SEARCH_SET',
+            search
+        });
         dispatch({ 
             type: 'FETCH'
         });
@@ -62,7 +65,6 @@ export function fetch(search, page = 1) {
                 res.data.results.forEach(planet => {
                     planet.films = planet.films.map(film => films[film]);
                 });
-                // films.forEach(film => console.log(film));
                 dispatch(fetchSuccess(res.data, page));
             },
             err => dispatch(fetchFail(err))
