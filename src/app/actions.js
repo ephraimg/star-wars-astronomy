@@ -9,12 +9,8 @@ export function changeSearch(search) {
     };
 };
 
-export function sort(field) {
+export function sort(field = 'name') {
     return function(dispatch, getState) {
-        dispatch({ 
-            type: 'SORTED_SET',
-            field
-        });
         const { sorted } = getState();
         dispatch({
             type: 'PLANETS_SORT',
@@ -22,6 +18,13 @@ export function sort(field) {
             field
         });
     };
+};
+
+export function setSort(field) {
+    dispatch({ 
+        type: 'SORTED_SET',
+        field
+    });
 };
 
 ///////////////////////////////////
@@ -47,35 +50,37 @@ export function fetchFilms() {
 
 const baseAPI = 'https://swapi.co/api/planets/';
 
-export function fetch(search) {
+export function fetch(search, page = 1) {
     return function(dispatch, getState) {
         dispatch({ 
             type: 'FETCH'
         });
-        const query = baseAPI + '?search=' + search;
+        const { films } = getState();
+        const query = `${baseAPI}?search=${search}&page=${page}`;
         return axios.get(query).then(
             res => {
-                const { films } = getState();
                 res.data.results.forEach(planet => {
                     planet.films = planet.films.map(film => films[film]);
                 });
                 // films.forEach(film => console.log(film));
-                dispatch(fetchSuccess(res.data));
+                dispatch(fetchSuccess(res.data, page));
             },
             err => dispatch(fetchFail(err))
         );
     };
 }
 
-export function fetchSuccess(planets) {
+export function fetchSuccess(planets, page) {
     return function(dispatch) {
         dispatch({ 
-            type: 'FETCH_SUCCESS'
+            type: 'FETCH_SUCCESS',
+            page
         });
         dispatch({ 
             type: 'PLANETS_SET',
             planets
         });
+        dispatch(sort());
     };
 }
 

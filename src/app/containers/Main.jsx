@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { getPage, sort } from '../actions';
+import { fetch, sort, setSort } from '../actions';
 import { DataTable } from '../components/DataTable';
 import { Nav } from '../components/Nav';
 
@@ -12,11 +12,17 @@ let Main = class extends React.Component {
     }
 
     render() { 
-        const { search, planets, page, getPage, sort } = this.props;
+        const { search, planets, page, fetch, sort } = this.props;
+        const handleSort = field => {
+            setSort(field);
+            sort(field);
+        };
         return (
             <div className="main">  
-                <DataTable data={planets} sort={sort} />
-                <Nav page={page} getPage={page => getPage(search, page)} />
+                <div className="table-wrapper">
+                    <DataTable data={planets} sort={handleSort} />
+                </div>
+                <Nav page={page} count={planets.count} fetchPage={page => fetch(search, page)} />
             </div> 
         );
     }
@@ -34,8 +40,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getPage: (search, page) => dispatch(getPage(search, page)),
-        sort: field => dispatch(sort(field))
+        fetch: (search, page) => dispatch(fetch(search, page)),
+        sort: field => dispatch(sort(field)),
+        setSort: field => dispatch(setSort(field))
     }
 };
 

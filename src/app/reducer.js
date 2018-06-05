@@ -56,8 +56,15 @@ export const films = (state, action) => {
     return state;
 };
 
-import { sampleData2 } from './sampleData';
-const initialPlanetsState = sampleData2;
+const initialPlanetsState = {
+    count: 1, 
+    results: [{
+        name: "Hoth", population: "unknown", diameter: "7200",
+        rotation_period: 23, orbital_period: 549,
+        terrain: "Tundra, Ice caves, Mountain ranges",
+        films: ["The Empire Strikes Back"]
+    }]
+};
 export const planets = (state, action) => {
 
     if (typeof state === 'undefined') {
@@ -99,7 +106,7 @@ export const page = (state, action) => {
         return initialPageState;
     }
 
-    if (action.type === 'PAGE_CHANGE') {
+    if (action.type === 'FETCH_SUCCESS') {
         return action.page;
     }
 
@@ -107,7 +114,7 @@ export const page = (state, action) => {
 };
 
 
-const initialSortedState = { field: null, order: 'desc' };
+const initialSortedState = { field: null, order: 'asc' };
 export const sorted = (state, action) => {
 
     if (typeof state === 'undefined') {

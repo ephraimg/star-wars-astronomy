@@ -125,6 +125,10 @@ h3 {
 .main {
     width: 100%;
     padding: 1%;
+}
+
+.table-wrapper {
+    width: 100%;
     overflow-x: scroll;
 }
 
@@ -157,4 +161,79 @@ td {
 
 .nav {
     text-align: right;
+    padding: 0.5rem;
+}
+
+.nav-opt {
+    display: inline-block;
+    height: 1.5rem;
+    width: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    margin: 0.5rem 0.75rem;
+    cursor: pointer;
+}
+
+.nav-curr {
+
+    background-color: LightGray;
+    border-radius: 50%;
+}
+
+/*@media 
+only screen and (max-width: 768px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+    table, thead, tbody, th, td, tr { 
+        display: block; 
+    }
+
+}*/
+
+@media 
+only screen and (max-width: 768px) {
+
+    table, thead, tbody, th, td, tr { 
+        display: block; 
+    }
+
+    /* Hide table headers off-screen*/
+    thead tr { 
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    
+    tr { 
+        border-bottom: 5px double DarkGray; 
+        margin-top: 0.25rem;
+        padding: 0.25rem;
+    }
+
+    tr:last-child {
+        border-bottom: none;
+    } 
+    
+    td { 
+        border-bottom: 1px solid #eee; 
+        position: relative;
+        padding-left: 50%; 
+    }
+    
+    td:before { 
+        content: attr(data-label);
+        background-color: #54c6e5;
+        color: white;
+        border-radius: 5px;
+        position: absolute;
+        display: inline-block;
+        top: 0.25rem;
+        left: 0.25rem;
+        width: 45%; 
+        height: 1.5rem;
+        line-height: 1.5rem;
+        padding-right: 1rem; 
+        white-space: nowrap;
+    }
+
 }
