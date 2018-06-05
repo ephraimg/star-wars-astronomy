@@ -1,12 +1,12 @@
 
-/* 
+/**********************************************/
+/**********************************************/
+/* Clear the default styles using Meyer reset */
 
-    Clear the default styles using Meyer reset
-
-    http://meyerweb.com/eric/tools/css/reset/ 
-    v2.0 | 20110126
-    License: none (public domain)
-
+/*
+http://meyerweb.com/eric/tools/css/reset/ 
+v2.0 | 20110126
+License: none (public domain)
 */
 
 html, body, div, span, applet, object, iframe,
@@ -53,7 +53,10 @@ table {
     border-spacing: 0;
 }
 
-/* start custom styles */
+
+/********************************************/
+/********************************************/
+/* Start custom styles */
 
 html {
     font-size: 14px;
@@ -82,13 +85,17 @@ h3 {
     padding: 25px 10px;
 }
 
+/*************************************/
+/*************************************/
+/* Component containing search field */
+
 .search {
     width: 100%;
     background-color: LightGray;
-    color: black;
     padding: 1rem 1%;    
 }
 
+/* Search button with icon */
 .search-button {
     display: inline-block;   
     vertical-align: top; 
@@ -100,6 +107,7 @@ h3 {
     cursor: pointer;
 }
 
+/* Search input field */
 .search-input {
     display: inline-block;   
     vertical-align: top;  
@@ -115,6 +123,9 @@ h3 {
     padding: 0 1rem;
 }
 
+/*************************************/
+/*************************************/
+/* Component with spinning planet during fetching */
 .spinner {
     display: inline-block;
     vertical-align: top; 
@@ -122,10 +133,17 @@ h3 {
     margin-left: 0.5rem;
 }
 
+/*************************************/
+/*************************************/
+/* Component containing table, nav */
+
 .main {
     width: 100%;
     padding: 1%;
 }
+
+/*************************************/
+/* Component containing table */
 
 .table-wrapper {
     width: 100%;
@@ -141,16 +159,12 @@ table {
 }
 
 th {
-    background-color: #54c6e5;
+    background-color: #54c6e5; /* blue */
     color: white;  
     font-weight: 200;
     padding: 0.75rem;
     text-align: center;
     cursor: pointer;
-}
-
-.no-sort {
-    cursor: default;
 }
 
 td {
@@ -159,11 +173,20 @@ td {
     border-bottom: 1px solid LightGray;
 }
 
+/* For non-sortable table column headers */
+.no-sort {
+    cursor: default;
+}
+
+/*************************************/
+/* Component containing nav */
+
 .nav {
     text-align: right;
     padding: 0.5rem;
 }
 
+/* First, Last, nums, arrows */
 .nav-opt {
     display: inline-block;
     height: 1.5rem;
@@ -174,12 +197,15 @@ td {
     cursor: pointer;
 }
 
+/* Mark the current page number */
 .nav-curr {
-
     background-color: LightGray;
     border-radius: 50%;
 }
 
+/********************************************/
+/********************************************/
+/* Make table scroll horiz on small screens */
 @media 
 only screen and (max-width: 768px) {
 
@@ -200,48 +226,5 @@ only screen and (max-width: 768px) {
     td:last-of-type, th:last-of-type {
       border-right: none;
     }
-
-/*    table, thead, tbody, th, td, tr { 
-        display: block; 
-    }*/
-
-    /* Hide table headers off-screen*/
- /*   thead tr { 
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
-    }
-    
-    tr { 
-        border-bottom: 5px double DarkGray; 
-        margin-top: 0.25rem;
-        padding: 0.25rem;
-    }
-
-    tr:last-child {
-        border-bottom: none;
-    } 
-    
-    td { 
-        border-bottom: 1px solid #eee; 
-        position: relative;
-        padding-left: 50%; 
-    }
-    
-    td:before { 
-        content: attr(data-label);
-        background-color: #54c6e5;
-        color: white;
-        border-radius: 5px;
-        position: absolute;
-        display: inline-block;
-        top: 0.25rem;
-        left: 0.25rem;
-        width: 45%; 
-        height: 1.5rem;
-        line-height: 1.5rem;
-        padding-right: 1rem; 
-        white-space: nowrap;
-    }*/
 
 }
