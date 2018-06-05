@@ -21,10 +21,10 @@ export function sort(field = 'name') {
 };
 
 export function setSort(field) {
-    dispatch({ 
+    return { 
         type: 'SORTED_SET',
         field
-    });
+    };
 };
 
 ///////////////////////////////////

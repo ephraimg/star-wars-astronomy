@@ -180,25 +180,33 @@ td {
     border-radius: 50%;
 }
 
-/*@media 
-only screen and (max-width: 768px),
-(min-device-width: 768px) and (max-device-width: 1024px)  {
-
-    table, thead, tbody, th, td, tr { 
-        display: block; 
-    }
-
-}*/
-
 @media 
 only screen and (max-width: 768px) {
 
-    table, thead, tbody, th, td, tr { 
-        display: block; 
+    table {
+      overflow-x: auto;
+      width: fit-content;
+      max-width: 100%;
     }
 
+    td {
+      white-space: nowrap;
+    }
+
+    td:first-of-type, th:first-of-type {
+      border-left: none;
+    }
+
+    td:last-of-type, th:last-of-type {
+      border-right: none;
+    }
+
+/*    table, thead, tbody, th, td, tr { 
+        display: block; 
+    }*/
+
     /* Hide table headers off-screen*/
-    thead tr { 
+ /*   thead tr { 
         position: absolute;
         top: -9999px;
         left: -9999px;
@@ -234,6 +242,6 @@ only screen and (max-width: 768px) {
         line-height: 1.5rem;
         padding-right: 1rem; 
         white-space: nowrap;
-    }
+    }*/
 
 }

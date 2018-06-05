@@ -3,7 +3,8 @@ import React from 'react';
 
 export const DataTable = ({ data, sort }) =>
     <table>
-    <thead>
+    <tbody>
+
         <tr>
             <th onClick={() => sort('name')}>NAME</th>
             <th onClick={() => sort('population')}>POPULATION</th>
@@ -13,8 +14,7 @@ export const DataTable = ({ data, sort }) =>
             <th className="no-sort">TERRAIN</th>
             <th className="no-sort">FILMS</th>
         </tr>
-    </thead>
-    <tbody>
+
         { data.results.map(row => 
             <tr key={row.name}>
                 <td data-label="NAME">{row.name}</td>

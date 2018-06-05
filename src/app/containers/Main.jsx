@@ -9,18 +9,18 @@ let Main = class extends React.Component {
 
     constructor(props) {
         super(props);
+        this.handleSort = this.handleSort.bind(this);
     }
-
+    handleSort(field) {
+        this.props.setSort(field);
+        this.props.sort(field);
+    }
     render() { 
-        const { search, planets, page, fetch, sort } = this.props;
-        const handleSort = field => {
-            setSort(field);
-            sort(field);
-        };
+        const { search, planets, page, fetch } = this.props;
         return (
             <div className="main">  
                 <div className="table-wrapper">
-                    <DataTable data={planets} sort={handleSort} />
+                    <DataTable data={planets} sort={this.handleSort} />
                 </div>
                 <Nav page={page} count={planets.count} fetchPage={page => fetch(search, page)} />
             </div> 
