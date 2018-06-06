@@ -11,9 +11,6 @@ let Search = class extends React.Component {
         super(props);
         this.fetchCurrentSearch = this.fetchCurrentSearch.bind(this);
     }
-    componentDidMount() {
-        this.props.fetchFilms();
-    }
     fetchCurrentSearch() {
         this.props.fetch(this.props.searchText);
     }

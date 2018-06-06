@@ -1,5 +1,6 @@
 
 import axios from 'axios';
+import { sort } from '../Main/actions';
 
 
 export function changeSearch(search) {
@@ -8,44 +9,6 @@ export function changeSearch(search) {
         search
     };
 };
-
-export function sort() {
-    return function(dispatch, getState) {
-        const { sorted } = getState();
-        dispatch({
-            type: 'PLANETS_SORT',
-            sorted
-        });
-    };
-};
-
-export function setSort(field) {
-    return { 
-        type: 'SORTED_SET',
-        field
-    };
-};
-
-///////////////////////////////////
-// API actions
-
-export function fetchFilms() {
-    return function(dispatch) {
-        return axios.get('https://swapi.co/api/films/').then(
-            res => {
-                const films = {};
-                res.data.results.forEach(film =>
-                    films[film.url] = film.title)
-                dispatch({
-                    type: 'FILMS_SET',
-                    films
-                });
-            },
-            err => dispatch(fetchFail(err))
-        );
-    };
-}
-
 
 const baseAPI = 'https://swapi.co/api/planets/';
 
