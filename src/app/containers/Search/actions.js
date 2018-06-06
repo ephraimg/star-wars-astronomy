@@ -4,9 +4,11 @@ import { sort } from '../Main/actions';
 
 
 export function changeSearch(search) {
-    return { 
+    // Prevent malicious user input
+    const cleanSearch = search.replace(/[^\w\d\-\u0020]/g, '');
+    return {
         type: 'SEARCH_CHANGE',
-        search
+        search: cleanSearch
     };
 };
 
