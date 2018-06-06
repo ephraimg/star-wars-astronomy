@@ -14,6 +14,8 @@ export const DumbApp = class extends React.Component {
         super(props);
     }
     componentDidMount() {
+        // Get list of all films from API to replace
+        // film urls in planet entries with film names
         this.props.fetchFilms();
     }
     render() { return (
@@ -24,7 +26,6 @@ export const DumbApp = class extends React.Component {
         </div> );
     }    
 }
-
 
 const mapDispatchToProps = dispatch => {
     return {

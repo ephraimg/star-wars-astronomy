@@ -8,6 +8,7 @@ export class Nav extends React.Component {
     }
     handleClick(page, e) {
         if (this.props.count !== undefined && page !== this.props.page) {
+            // Send API request with same search term but specific page
             this.props.fetchPage(page);
         }
     }
@@ -21,7 +22,7 @@ export class Nav extends React.Component {
                     First
                 </div>
                 <div className="nav-opt" onClick={() => this.handleClick(prev)}>
-                    {'\u25C0'}
+                    {'\u25C0'/* left arrow */}
                 </div>
 
                 { pagination(this.props.page, last).map((num, idx) => {
@@ -40,7 +41,7 @@ export class Nav extends React.Component {
                 })}
 
                 <div className="nav-opt" onClick={() => this.handleClick(next)}>
-                    {'\u25B6'}
+                    {'\u25B6'/* right arrow */}
                 </div>
                 <div className="nav-opt" onClick={() => this.handleClick(last)}>
                     Last
@@ -50,6 +51,7 @@ export class Nav extends React.Component {
     }
 };
 
+// Borrowed this to control numbers vs dots in nav
 // https://gist.github.com/kottenator/9d936eb3e4e3c3e02598
 function pagination(currentPage, nrOfPages) {
     var delta = 2,

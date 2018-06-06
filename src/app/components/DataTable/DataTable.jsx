@@ -17,17 +17,17 @@ export const DataTable = ({ data, sort }) =>
 
         { data.results.map(row => 
             <tr key={row.name}>
-                <td data-label="NAME">{row.name}</td>
-                <td data-label="POPULATION">{row.population}</td>
-                <td data-label="DIAMETER">{row.diameter}</td>
-                <td data-label="ROTATION PERIOD">{row.rotation_period}</td>
-                <td data-label="ORBITAL PERIOD">{row.orbital_period}</td>
-                <td data-label="TERRAIN">
+                <td>{row.name}</td>
+                <td>{row.population}</td>
+                <td>{row.diameter}</td>
+                <td>{row.rotation_period}</td>
+                <td>{row.orbital_period}</td>
+                <td>
                     { row.terrain.split(', ').map(terr =>
                         <div key={terr}>{terr[0].toUpperCase() + terr.slice(1)}</div>
                     )}
                 </td>
-                <td data-label="FILMS">
+                <td >
                     { row.films.length > 0
                         ? row.films.map(film => <div key={film}>"{film}"</div>)
                         : "none"

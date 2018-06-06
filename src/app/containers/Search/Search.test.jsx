@@ -1,32 +1,47 @@
-// import configureMockStore from 'redux-mock-store';
-// import thunk from 'redux-thunk';
-// import { fetch } from './actions';
+
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+import { fetch, baseAPI } from './actions';
+import axios from 'axios';
+import MockAdapter from 'axios-mock-adapter';
 import { expect } from 'chai';
 import { fetching, searchText, prevSearch, page } from './reducer';
 
-// const middlewares = [thunk];
-// const mockStore = configureMockStore(middlewares);
+const middlewares = [thunk];
+const mockStore = configureMockStore(middlewares);
 
-// describe('Fetch async action', () => {
-//   afterEach(() => {
-//     fetchMock.reset();
-//     fetchMock.restore();
-//   })
-//   it('should create FETCH_SUCCESS when fetching has been done', () => {
-//     fetchMock.getOnce('/fakeAPIurl');
-//     const expectedActions = [
-//       { type: 'FETCH' },
-//       { type: 'PREV_SEARCH_SET' },
-//       { type: 'FETCH_SUCCESS', page: 1 },
-//       { type: 'PLANETS_SET', planets: {} }
-//     ];
-//     const store = mockStore({ page: null, planets: {} });
-//     return store.dispatch(fetch('Tatooine', 1)).then(() => {
-//       // return of async actions
-//       expect(store.getActions()).toEqual(expectedActions);
-//     });
-//   })
-// });
+describe('The fetch action', () => {
+
+    it('should dispatch FETCH, PREV_SEARCH_SET, FETCH_SUCCESS, PLANETS_SET, PLANETS_SORT', () => {
+        const store = mockStore({ page: 3, planets: { count: 1, results: {} } });
+        var mock = new MockAdapter(axios);
+        // arguments for reply are (status, data, headers)
+        mock.onGet(`${baseAPI}?search=Tatooine&page=1`)
+            .reply(200, { count: 1, results: [{ name: 'Tatooine', films: [] }] });
+        store.dispatch(fetch('Tatooine', 1)).then(() => {
+            expect(store.getActions()).to.deep.include({ 
+                type: 'PREV_SEARCH_SET', search: 'Tatooine' 
+            });
+            expect(store.getActions()).to.deep.include({ 
+                type: 'FETCH' 
+            });
+            expect(store.getActions()).to.deep.include({ 
+                type: 'FETCH_SUCCESS',
+                page: 1
+            });
+            expect(store.getActions()).to.deep.include({ 
+                type: 'PLANETS_SET',
+                planets: { count: 1, results: [{ name: 'Tatooine', films: [] }] }
+            });
+            expect(store.getActions()).to.deep.include({ 
+                type: 'PLANETS_SORT',
+                sorted: undefined
+            });
+        });
+    });
+
+});
+
 
 describe('The fetching reducer', () => {
 

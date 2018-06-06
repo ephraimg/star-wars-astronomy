@@ -13,7 +13,9 @@ export class DumbMain extends React.Component {
         this.handleSort = this.handleSort.bind(this);
     }
     handleSort(field) {
+        // Store the sort field and order
         this.props.setSort(field);
+        // Do the sorting
         this.props.sort();
     }
     render() { 

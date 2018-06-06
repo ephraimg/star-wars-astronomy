@@ -12,7 +12,7 @@ export function changeSearch(search) {
     };
 };
 
-const baseAPI = 'https://swapi.co/api/planets/';
+export const baseAPI = 'https://swapi.co/api/planets/';
 
 export function fetch(search, page = 1) {
     return function(dispatch, getState) {

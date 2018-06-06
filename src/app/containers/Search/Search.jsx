@@ -12,6 +12,7 @@ export class DumbSearch extends React.Component {
         this.fetchCurrentSearch = this.fetchCurrentSearch.bind(this);
     }
     fetchCurrentSearch() {
+        // Send to API request with same search term as before
         this.props.fetch(this.props.searchText);
     }
     render() {  return (
