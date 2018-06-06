@@ -30,7 +30,7 @@ The application is designed to provide a good user experience on devices of any 
 
 ### Testing
 
-The repo includes an assortment of tests across several suites. These include DOM tests, tests of Redux reducers, and tests of Redux actions. Complete coverage is still 
+The repo includes an assortment of tests across several suites. These include DOM tests, tests of Redux reducers, and tests of Redux actions (including mocking an axios call to the API). Complete coverage is still quite a way off, but the present tests indicate the general strategies to be used. 
 
 ## Contributing
 
