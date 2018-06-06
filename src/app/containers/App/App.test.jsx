@@ -5,6 +5,7 @@ import { mount, shallow } from 'enzyme';
 import { expect } from 'chai';
 import sinon from 'sinon';
 import { DumbApp } from './App';
+import { films } from './reducer';
 
 describe('The App container', () => {
 
@@ -26,4 +27,16 @@ describe('The App container', () => {
         expect(fetchFilmsFake).to.have.property('callCount', 1);
     });
     
+});
+
+
+describe('The films reducer', () => {
+
+    it('should return action.films on a FILMS_SET action', () => {
+        expect(films({}, {
+            type: 'FILMS_SET',
+            films: { count: 2, results: [{ name: 'Episode IV' }, { name: 'Episode VI' }] }
+        })).to.eql({ count: 2, results: [{ name: 'Episode IV' }, { name: 'Episode VI' }] });
+    });
+
 });
