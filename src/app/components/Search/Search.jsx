@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Spinner } from './Spinner';
+import { Spinner } from '../Spinner/Spinner';
 
 export const Search = props => (
     <div className="search">

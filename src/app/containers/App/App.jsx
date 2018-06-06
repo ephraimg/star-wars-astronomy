@@ -4,9 +4,9 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
-import { Banner } from '../components/Banner';
-import { Search } from './Search';
-import { Main } from './Main';
+import { Banner } from '../../components/Banner/Banner';
+import { Search } from '../Search/Search';
+import { Main } from '../Main/Main';
 import { fetchFilms } from './actions';
 
 let App = class extends React.Component {

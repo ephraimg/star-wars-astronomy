@@ -6,7 +6,7 @@ import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { reducer } from './reducer';
-import { App } from './containers/App';
+import { App } from './containers/App/App';
 import './styles.css'; // to let webpack plugin find styles
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));

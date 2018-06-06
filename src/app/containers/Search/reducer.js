@@ -1,12 +1,6 @@
 
 import { combineReducers } from 'redux';
 
-export const search = combineReducers({
-    fetching,
-    searchText,
-    prevSearch,
-    page
-});
 
 const initialFetchingState = false;
 export const fetching = (state, action) => {
@@ -73,4 +67,13 @@ export const page = (state, action) => {
 
     return state;
 };
+
+
+
+export const search = combineReducers({
+    fetching,
+    searchText,
+    prevSearch,
+    page
+});
 

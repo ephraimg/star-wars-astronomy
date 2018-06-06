@@ -2,8 +2,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { Search as SearchComp } from '../components/Search';
-import { changeSearch, fetch, fetchFilms } from '../actions';
+import { Search as SearchComp } from '../../components/Search/Search';
+import { changeSearch, fetch, fetchFilms } from './actions';
 
 let Search = class extends React.Component {
 

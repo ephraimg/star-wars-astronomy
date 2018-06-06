@@ -1,9 +1,9 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetch, sort, setSort } from '../actions';
-import { DataTable } from '../components/DataTable';
-import { Nav } from '../components/Nav';
+import { fetch, sort, setSort } from './actions';
+import { DataTable } from '../../components/DataTable/DataTable';
+import { Nav } from '../../components/Nav/Nav';
 
 let Main = class extends React.Component {
 
