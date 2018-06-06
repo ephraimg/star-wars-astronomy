@@ -82,7 +82,7 @@ h3 {
     background-color: black;
     color: white;
     text-align: center;
-    padding: 25px 10px;
+    padding: 2rem 1rem;
 }
 
 /*************************************/
@@ -152,7 +152,7 @@ h3 {
 
 table {
     width: 100%;
-    border-bottom: 15px solid LightGray;
+    border-bottom: 1rem solid LightGray;
     border-radius: 5px;  
     overflow: hidden;  
     border-collapse: separate;

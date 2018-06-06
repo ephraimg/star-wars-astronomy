@@ -1,7 +1,8 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetch, sort, setSort } from './actions';
+import { sort, setSort } from './actions';
+import { fetch } from '../Search/actions';
 import { DataTable } from '../../components/DataTable/DataTable';
 import { Nav } from '../../components/Nav/Nav';
 
