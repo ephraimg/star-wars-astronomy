@@ -1,10 +1,14 @@
 
 import React from 'react';
 import { createStore } from 'redux';
+import thunk from 'redux-thunk';
 import { mount, shallow } from 'enzyme';
 import { expect } from 'chai';
+import configureMockStore from 'redux-mock-store';
 import { DumbMain } from './Main';
 import { planets, sorted } from './reducer';
+import { sort, setSort } from './actions';
+
 
 describe('The Main container', () => {
 
@@ -142,3 +146,30 @@ describe('The planets reducer', () => {
 
 });
 
+
+const middlewares = [thunk];
+const mockStore = configureMockStore(middlewares);
+
+describe('The sort action', () => {
+
+    it('should get state.sorted and return a PLANETS_SORT action', () => {
+        const expectedActions = [
+          { type: 'PLANETS_SORT', sorted: { field: 'name', order: 'asc' } }
+        ];
+        const store = mockStore({ sorted: { field: 'name', order: 'asc' } });
+        store.dispatch(sort());
+        expect(store.getActions()).to.eql(expectedActions);
+    })
+
+});
+
+describe('The setSort action', () => {
+
+    it('should return a SORTED_SET action with argument as action.field', () => {
+        expect(setSort('population')).to.eql({
+            type: 'SORTED_SET',
+            field: 'population'
+        })
+    });
+
+});
