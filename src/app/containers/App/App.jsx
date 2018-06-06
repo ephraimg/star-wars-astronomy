@@ -9,7 +9,7 @@ import { Search } from '../Search/Search';
 import { Main } from '../Main/Main';
 import { fetchFilms } from './actions';
 
-let App = class extends React.Component {
+export const DumbApp = class extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -32,9 +32,7 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-App = connect(
+export const App = connect(
     null,
     mapDispatchToProps
-)(App);
-
-export { App };
+)(DumbApp);

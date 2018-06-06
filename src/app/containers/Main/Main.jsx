@@ -5,7 +5,7 @@ import { fetch, sort, setSort } from './actions';
 import { DataTable } from '../../components/DataTable/DataTable';
 import { Nav } from '../../components/Nav/Nav';
 
-let Main = class extends React.Component {
+export class DumbMain extends React.Component {
 
     constructor(props) {
         super(props);
@@ -17,7 +17,6 @@ let Main = class extends React.Component {
     }
     render() { 
         const { prevSearch, planets, page, fetch } = this.props;
-        console.log('\n\n\nprevSearch:' + prevSearch + '\n\n\n');
         return (
             <div className="main">  
                 <div className="table-wrapper">
@@ -47,9 +46,7 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-Main = connect(
+export const Main = connect(
     mapStateToProps,
     mapDispatchToProps
-)(Main);
-
-export { Main };
+)(DumbMain);

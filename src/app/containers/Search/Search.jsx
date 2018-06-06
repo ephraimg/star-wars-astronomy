@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Search as SearchComp } from '../../components/Search/Search';
 import { changeSearch, fetch, fetchFilms } from './actions';
 
-let Search = class extends React.Component {
+export class DumbSearch extends React.Component {
 
     constructor(props) {
         super(props);
@@ -40,9 +40,7 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-Search = connect(
+export const Search = connect(
     mapStateToProps,
     mapDispatchToProps
-)(Search);
-
-export { Search };
+)(DumbSearch);
